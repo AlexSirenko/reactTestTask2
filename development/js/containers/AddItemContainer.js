@@ -1,13 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { addItem } from '../actions/index'
+import { addItem, addFormToggle } from '../actions/index'
 
 import AddItem from '../components/AddItem'
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAddItem: (item) => dispatch(addItem(item))
+        onAddItem: (item) => dispatch(addItem(item)),
+        onCloseAddItem: () => dispatch(addFormToggle())
     }
 }
 

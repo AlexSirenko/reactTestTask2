@@ -25,10 +25,10 @@ module.exports = {
     watch: NODE_ENV === 'development',
     
     resolve: {
-        extensions: [' ', '.js', '.jsx'/*,'.scss'*/]
+        extensions: [' ', '.js', '.jsx', '.scss']
     },
 
-    devtool: false,// NODE_ENV ==='development' ? 'source-map' : false,
+    devtool: false,//NODE_ENV ==='development' ? 'source-map' : false,
 
     module: {
         rules: [
@@ -44,9 +44,10 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
+                exclude: [/node_modules/],
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: ['css-loader','sass-loader']
+                    use: ['raw-loader','sass-loader']
                 })
             }
         ]

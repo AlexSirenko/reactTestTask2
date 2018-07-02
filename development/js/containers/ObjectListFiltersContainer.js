@@ -1,8 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { onClickUpdateItem } from '../actions/index'
-
 import ObjectListFilters from '../components/ObjectListFilters'
 
 const mapStateToProps = state => {
@@ -13,8 +11,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onClickUpdateItem: (id) => dispatch(onClickUpdateItem(id)),
-        onClickDeleteItem: (id) => dispatch(deleteItem(id))
+
     }
 }
 

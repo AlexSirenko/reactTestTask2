@@ -1,4 +1,10 @@
-import React from 'react';
+import React from 'react'
+import PropTypes from 'prop-types'
+
+import AddItemContainer from '../containers/AddItemContainer'
+import AddItemBtnContainer from '../containers/AddItemBtnContainer'
+import ObjectListFiltersContainer from '../containers/ObjectListFiltersContainer'
+import UpdateItemContainer from '../containers/UpdateItemContainer'
 
 class Application extends React.Component {
 
@@ -7,12 +13,25 @@ class Application extends React.Component {
     }
 
     render() {
+        const addItem = this.props.isFormOpen ? <AddItemContainer /> : null;
+        const updateItem = this.props.isUpdateFormOpen ? <UpdateItemContainer /> : null;
+
         return (
             <div>
-
+                <div className='container'>
+                    <ObjectListFiltersContainer />
+                    <AddItemBtnContainer />
+                    {addItem}
+                    {updateItem}
+                </div>
             </div>
         )
     }
+}
+
+Application.propTypes = {
+    isFormOpen: PropTypes.bool,
+    isUpdateFormOpen: PropTypes.bool
 }
 
 export default Application

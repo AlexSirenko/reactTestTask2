@@ -2,8 +2,8 @@ export const items = (state = [], action) => {
     switch (action.type) {
         case 'ADD_ITEM':
             return [
-                ...state,
-                action.item
+                action.item,
+                ...state                
             ]
         case 'DELETE_ITEM':
             return state.filter((item) => {
@@ -17,14 +17,13 @@ export const items = (state = [], action) => {
                 return item;
             })
         case 'COMPLETE_ITEM': 
-            state.forEach((item)=> {
+            return state.map((item)=> {
                 if(item.id == action.id){
-                    item.completed = !item.completed;
+                    let finishDate = !item.completed ? Date.now() : null;
+                    return Object.assign({}, item, {completed: !item.completed, finishDate: finishDate});
                 }
+                return item;
             })
-            return [
-                ...state
-            ]
         default:
             return state
     }

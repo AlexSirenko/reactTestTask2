@@ -1,0 +1,90 @@
+.object-item-container {
+    padding: 20px;
+    border: 1px solid #e6e6e6;
+}
+
+.completed {
+    color: #b5b1b1;
+    &>h4 {
+        text-decoration: line-through;
+    }
+}
+
+.item-header {
+    display: flex;
+    padding-bottom: 20px;
+    justify-content: space-between;
+
+    &>.header-text {
+        width: 70%;
+        padding-top: 4px;
+        font-size: 1.3em;
+    }
+    &>.contrals {
+        display: flex;
+        align-items: center;
+        &>div{
+            width: 15px;
+            height: 15px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            opacity: 0.2;
+            &:hover {
+                opacity: 1;
+                cursor: pointer;
+                border-color: #e6e6e6;
+            }
+        }
+
+        &>.update {
+            margin-right: 6px;
+            background: url('../img/update.png')  no-repeat;
+            background-size: contain;
+        }
+ 
+        &>.delete {
+            background: url('../img/delete.png') no-repeat;
+            background-size: contain;
+        }
+    }
+}
+
+.input-container {
+    position: relative;
+    cursor: pointer;
+    width: 40px;
+    height: 25px;
+
+    & input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+}
+.input-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    border-radius: 25px;
+    border: 1px solid #e6e6e6;
+
+    &:after {
+        content: "";
+        position: absolute;
+        display: none;
+
+        left: 10px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border:solid#70c9b8;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+}

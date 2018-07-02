@@ -1,1 +1,1 @@
-# reactTestTask2
+# reactTestTask2 (Planner)

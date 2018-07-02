@@ -1,22 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 import { reducer } from './reducers/index'
-import Application from './components/Application'
+import ApplicationContainer from './containers/ApplicationContainer'
 
-import {loadState, saveState} from './localStorage/localStorage'
+import {loadState, saveState} from './localStore/localStorage'
 
 const persistedState = loadState();
 
 const store = createStore(
     reducer,
     persistedState,
-    composeWithDevTools(
-        applyMiddleware(thunkMiddleware)
-    )
+    composeWithDevTools()
 );
 
 store.subscribe(()=> {
@@ -25,7 +23,7 @@ store.subscribe(()=> {
 
 ReactDOM.render(
     <Provider store={store}>
-        <Application />
+        <ApplicationContainer />
     </Provider>,
     document.getElementById('app')
 );

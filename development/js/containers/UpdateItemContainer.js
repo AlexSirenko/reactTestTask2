@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { updateItem } from '../actions/index'
+import { updateItem, updateFormToggle } from '../actions/index'
 
 import UpdateItem from '../components/UpdateItem'
 
@@ -16,7 +16,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onUpdateItem: (item) => dispatch(updateItem(item))
+        onUpdateItem: (item) => dispatch(updateItem(item)),
+        onCloseUpdateItem: () => dispatch(updateFormToggle())
     }
 }
 

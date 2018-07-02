@@ -13,6 +13,11 @@ export const onClickUpdateItem = (id) => ({
     id
 })
 
+export const updateFormToggle = (id) => ({
+    type: 'UPDATE_FORM_TOGGLE'
+})
+
+
 export const updateItem = (item) => ({
     type: 'UPDATE_ITEM',
     item
