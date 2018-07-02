@@ -9,8 +9,9 @@ class AddItemBtn extends React.Component {
 
     render() {
         return (
-            <div>
-                <button onClick={this.props.onBtnClick}>Add Item</button>
+            <div className='add-btn' onClick={this.props.onBtnClick}>
+                <div className='horizontal'></div>
+                <div className='vertical'></div>
             </div>
         )
     }

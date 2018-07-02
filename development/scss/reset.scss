@@ -41,3 +41,9 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+input, button, textarea {
+	outline: none;
+	border: 0;
+	background-color: #fff;
+}

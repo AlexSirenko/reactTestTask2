@@ -11,9 +11,9 @@ class AddItem extends React.Component {
 
     render() {
         return (
-            <div>
-                <div>
-                    <h4>Fill rows for creating new item:</h4>
+            <div className='add-item-container'>
+                <div className='header'>
+                    <h4>Add Item</h4>
                 </div>
                 <FormItem item={null} onSubmitFunc={this.props.onAddItem} closeDialog = {this.props.onCloseAddItem}/>
             </div>

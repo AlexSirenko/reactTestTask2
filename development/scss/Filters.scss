@@ -1,0 +1,14 @@
+.filters-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    & select {
+        padding: 4px;
+
+        &>option {
+            height: 30px;
+        }
+    }
+}

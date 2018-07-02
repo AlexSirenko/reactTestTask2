@@ -12,7 +12,7 @@ module.exports = {
 
     entry: {
         bundle: './js/app.jsx',
-        styles: './scss/app.scss'
+        //styles: './scss/app.scss'
     },
 
     output: {
@@ -25,7 +25,7 @@ module.exports = {
     watch: NODE_ENV === 'development',
     
     resolve: {
-        extensions: [' ', '.js', '.jsx', '.scss']
+        extensions: [' ', '.js', '.jsx', /*'.scss'*/]
     },
 
     devtool: false,//NODE_ENV ==='development' ? 'source-map' : false,
@@ -42,21 +42,21 @@ module.exports = {
                     }
                 }
             },
-            {
-                test: /\.scss$/,
-                exclude: [/node_modules/],
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: ['raw-loader','sass-loader']
-                })
-            }
+            // {
+            //     test: /\.scss$/,
+            //     exclude: [/node_modules/],
+            //     use: ExtractTextPlugin.extract({
+            //         fallback: 'style-loader',
+            //         use: ['raw-loader','sass-loader']
+            //     })
+            // }
         ]
     },
 
     plugins: [
-        new ExtractTextPlugin('styles.css',{
-            allChanks: true
-        })
+        // new ExtractTextPlugin('styles.css',{
+        //     allChanks: true
+        // })
     ]
 };
 

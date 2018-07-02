@@ -11,9 +11,9 @@ class UpdateItem extends React.Component {
 
     render() {
         return (
-            <div>
-                <div>
-                    <h4>Change data and save item.</h4>
+            <div className='add-item-container'>
+                <div className='header'>
+                    <h4>Add Item</h4>
                 </div>
                 <FormItem item={this.props.item} onSubmitFunc={this.props.onUpdateItem} closeDialog ={this.props.onCloseUpdateItem} />
             </div>

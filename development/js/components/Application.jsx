@@ -5,6 +5,7 @@ import AddItemContainer from '../containers/AddItemContainer'
 import AddItemBtnContainer from '../containers/AddItemBtnContainer'
 import ObjectListFiltersContainer from '../containers/ObjectListFiltersContainer'
 import UpdateItemContainer from '../containers/UpdateItemContainer'
+import Header from './Header'
 
 class Application extends React.Component {
 
@@ -19,6 +20,7 @@ class Application extends React.Component {
         return (
             <div>
                 <div className='container'>
+                    <Header />
                     <ObjectListFiltersContainer />
                     <AddItemBtnContainer />
                     {addItem}

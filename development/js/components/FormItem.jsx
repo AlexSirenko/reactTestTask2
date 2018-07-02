@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import classnames from 'classnames'
+
 class FormItem extends React.Component {
 
     constructor(props) {
@@ -17,7 +19,7 @@ class FormItem extends React.Component {
                 description: item.description,
                 importance: item.importance,
                 haveToFinishDate: item.haveToFinishDate,
-                btn: 'Update'
+                btn: 'UPDATE'
             }
         }
 
@@ -26,7 +28,7 @@ class FormItem extends React.Component {
             description: '',
             importance: 'LOW',
             haveToFinishDate: Date.now(),
-            btn: 'Add'
+            btn: 'ADD'
         }
     }
 
@@ -79,27 +81,52 @@ class FormItem extends React.Component {
     }
 
     render() {
+
+        const lowBtn = classnames({
+            'importance-btn': true,
+            'low-btn': true,
+            'active-importance-btn-low': this.state.importance == 'LOW'
+        });
+
+        const middleBtn = classnames({
+            'importance-btn': true,
+            'middle-btn': true,
+            'active-importance-btn-middle': this.state.importance == 'MIDDLE'
+        });
+
+        const highBtn = classnames({
+            'importance-btn': true,
+            'high-btn': true,
+            'active-importance-btn-high': this.state.importance == 'HIGH'
+        });
         return (
-            <div>
-                <div>
-                    <p>Header: </p>
-                    <input type="text" defaultValue={this.state.header} onChange={(e) => this.setState({ header: e.target.value })} />
+            <div className='form-item'>
+                <div className='close-form' onClick={() => this.props.closeDialog()}></div>
+                <div className='form-inputs'>
+                    <div>
+                        <div>
+                            <p>Header: </p>
+                            <input className='input' type="text" defaultValue={this.state.header} onChange={(e) => this.setState({ header: e.target.value })} />
+                        </div>
+                        <div>
+                            <p>Importance: </p>
+                            <div className="btn-container">
+                                <button className={lowBtn} onClick={() => this.setState({ importance: 'LOW' })}>LOW</button>
+                                <button className={middleBtn} onClick={() => this.setState({ importance: 'MIDDLE' })}>MIDDLE</button>
+                                <button className={highBtn} onClick={() => this.setState({ importance: 'HIGH' })}>HIGH</button>
+                            </div>
+                        </div>
+                        <div>
+                            <p>Have to finish datetime: </p>
+                            <input type="date" defaultValue={this.getCorrectFormatDate(this.state.haveToFinishDate)} onChange={(e) => this.onChangeDateTime(e)} />
+                        </div>
+                    </div>
+                    <div className='description-textarea'>
+                        <p>Description: </p>
+                        <textarea className='textarea' type="text" defaultValue={this.state.description} onChange={(e) => this.setState({ description: e.target.value })}></textarea>
+                    </div>
                 </div>
-                <div>
-                    <p>Description: </p>
-                    <textarea type="text" defaultValue={this.state.description} onChange={(e) => this.setState({ description: e.target.value })}></textarea>
-                </div>
-                <div>
-                    <p>Importance: </p>
-                    <button onClick={() => this.setState({ importance: 'LOW' })}>LOW</button>
-                    <button onClick={() => this.setState({ importance: 'MIDDLE' })}>MIDDLE</button>
-                    <button onClick={() => this.setState({ importance: 'HIGH' })}>HIGH</button>
-                </div>
-                <div>
-                    <p>Have to finish datetime: </p>
-                    <input type="date" defaultValue={this.getCorrectFormatDate(this.state.haveToFinishDate)} onChange={(e) => this.onChangeDateTime(e)} />
-                </div>
-                <button onClick={this.handleSubmit}>{this.state.btn}</button>
+                <button className='form-submit-btn' onClick={this.handleSubmit}>{this.state.btn}</button>
             </div>
         )
     }

@@ -16,14 +16,12 @@ class Filters extends React.Component {
 
     handleMainChange = (e) => {
         let filters = {};
-        if (e.target.value) {
-            filters = {
-                completed: 'ALL',
-                importance: 'ALL'
-            };
-            this.setState(filters);
-            this.props.onChangeFilter(filters);
-        }
+        filters = {
+            completed: 'ALL',
+            importance: 'ALL'
+        };
+        this.setState(filters);
+        this.props.onChangeFilter(filters);
     }
 
     handleCompleteChange = (e) => {
@@ -60,49 +58,53 @@ class Filters extends React.Component {
     render() {
 
         return (
-            <div>
+            <div className='filters-container'>
                 <div>
-                    <p>All</p>
-                    <input type="checkbox" defaultChecked={false} onChange={(e) => this.handleMainChange(e)} />
+                    <p>
+                        <button className='form-submit-btn' onClick={(e) => this.handleMainChange(e)}>Reset</button>
+                    </p>
                 </div>
 
-                <div>
-                    <p>Completed:</p>
-                    <select value={this.state.completed} onChange={(e) => this.handleCompleteChange(e)}>
-                        <option value="ALL">All</option>
-                        <option value="COMPLETED">Completed</option>
-                        <option value="INCOMPLETED">Incompleted</option>
-                    </select>
-                </div>
+                    <div>
+                        <p>Completed:
+                        <select value={this.state.completed} onChange={(e) => this.handleCompleteChange(e)}>
+                                <option value="ALL">All</option>
+                                <option value="COMPLETED">Completed</option>
+                                <option value="INCOMPLETED">Incompleted</option>
+                            </select>
+                        </p>
+                    </div>
 
-                <div>
-                    <p>Importance:</p>
-                    <select value={this.state.importance} onChange={(e) => this.handleImportanceChange(e)}>
-                        <option value="ALL">All</option>
-                        <option value="LOW">Low</option>
-                        <option value="MIDDLE">Middle</option>
-                        <option value="HIGH">High</option>
-                    </select>
-                </div>
+                    <div>
+                        <p>Importance:
+                        <select value={this.state.importance} onChange={(e) => this.handleImportanceChange(e)}>
+                                <option value="ALL">All</option>
+                                <option value="LOW">Low</option>
+                                <option value="MIDDLE">Middle</option>
+                                <option value="HIGH">High</option>
+                            </select>
+                        </p>
+                    </div>
 
-                <div>
-                    <p>Expire:</p>
+                    <div>
+                        <p>Expire:
                     <select value={this.state.expire} onChange={(e) => this.handleExpireChange(e)}>
-                        <option value="ALL">All</option>
-                        <option value="NOT_EXPIRED">Not expired</option>
-                        <option value="ALREADY">Already</option>
-                        <option value="TODAY">Today</option>
-                        <option value="IN_3_DAYS">in 3 days</option>
-                        <option value="IN_5_DAYS">In 5 days</option>
-                    </select>
+                                <option value="ALL">All</option>
+                                <option value="NOT_EXPIRED">Not expired</option>
+                                <option value="ALREADY">Already</option>
+                                <option value="TODAY">Today</option>
+                                <option value="IN_3_DAYS">in 3 days</option>
+                                <option value="IN_5_DAYS">In 5 days</option>
+                            </select>
+                        </p>
+                    </div>
                 </div>
-            </div>
-        )
-    }
-}
-
+                )
+            }
+        }
+        
 Filters.propTypes = {
-    onChangeFilter: PropTypes.func
-}
-
+                    onChangeFilter: PropTypes.func
+            }
+            
 export default Filters
